@@ -20,6 +20,7 @@ driver.find_element(By.XPATH, "//input[@id='email']").send_keys("vnsdjvbw@gmail.
 driver.find_element(By.XPATH, "//input[@id='phone']").send_keys("9876543212")
 driver.find_element(By.XPATH, "//textarea[@id='textarea']").send_keys("lvmkfnvof dkfv dfn kvmdobnd")
 
+#handling the radio buttons and checkboxes
 
 male_radio_but = driver.find_element(By.XPATH, "//input[@id='male']")
 if not male_radio_but.is_selected():
@@ -32,6 +33,7 @@ for day in days_checkbox:
         day.click()
 
 
+## Handling the dropdown
 dropdown_country = Select(driver.find_element(By.XPATH, "//select[@id='country']"))
 dropdown_country.select_by_visible_text("India")
 
@@ -44,6 +46,7 @@ dropdown_animals = Select(driver.find_element(By.XPATH, "//select[@id='animals']
 dropdown_animals.select_by_visible_text("Fox")
 
 
+##handling datepickers
 date_input1 = driver.find_element(By.XPATH, "//input[@id='datepicker']")
 date_input1.click()
 date_year = "2026"
@@ -99,10 +102,14 @@ end_date = driver.find_element(By.XPATH,"//input[@id='end-date']").send_keys("04
 submit_button = driver.find_element(By.XPATH,"//button[@class='submit-btn']").click()
 time.sleep(2)
 
+## handling the search box
+
 search_input = driver.find_element(By.XPATH,"//input[@id='Wikipedia1_wikipedia-search-input']").send_keys("GE vernova")
 search_but = driver.find_element(By.XPATH,"//input[@class='wikipedia-search-button']")
 search_but.submit()
 time.sleep(2)
+
+##handling different alerts
 
 alert_button = driver.find_element(By.XPATH,"//button[@id='alertBtn']").click()
 time.sleep(3)
@@ -120,6 +127,8 @@ time.sleep(3)
 js_alert = driver.switch_to.alert
 js_alert.send_keys("Pavan kalyan")
 js_alert.accept()
+
+##Mouse actions like hover,double_click,drag and drop,slider
 
 hover_but = driver.find_element(By.XPATH,"//button[@class='dropbtn']")
 laptops_click = driver.find_element(By.XPATH,"//div[@class='dropdown-content']/a[text()='Laptops']")
@@ -157,7 +166,7 @@ for ele in scroll_options:
         ele.click()
         break
 
-#handling links
+##handling proper links and broken links
 
 allLinks = driver.find_elements(By.XPATH,"//div[@id='laptops']/a")
 
@@ -192,7 +201,7 @@ for link in allBrokenLinks:
 print("Good links:",good_links)
 print("Broken links:",brokenLinks)
 
-#uploading files
+#handling uploading files
 
 file_input = driver.find_element(By.XPATH,"//input[@id='singleFileInput']")
 file_input.send_keys(r"C:\Users\pavan\Downloads\file_example_XLS_10.xlsx")
@@ -284,12 +293,6 @@ blog_link = shadow_root.find_element(By.CSS_SELECTOR,"a[href='https://www.pavant
 driver.execute_script("arguments[0].click();", blog_link)
 
 driver.back()
-
-
-
-
-
-
 
 time.sleep(10)
 driver.quit()
